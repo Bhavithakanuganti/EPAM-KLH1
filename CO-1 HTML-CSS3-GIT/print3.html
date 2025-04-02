@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Selected Window</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .section { border: 1px solid black; padding: 10px; margin: 10px; }
+        button { margin: 10px; padding: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h2>Select a Section to Print</h2>
+    
+    <div class="section" id="section1">
+        <h3>Section 1</h3>
+        <p>This is the first section to print.</p>
+    </div>
+
+    <div class="section" id="section2">
+        <h3>Section 2</h3>
+        <p>This is the second section to print.</p>
+    </div>
+
+    <button onclick="printSection('section1')">Print Section 1</button>
+    <button onclick="printSection('section2')">Print Section 2</button>
+
+    <script>
+        function printSection(sectionId) {
+            let content = document.getElementById(sectionId).innerHTML;
+            let originalContent = document.body.innerHTML;
+            
+            document.body.innerHTML = content; // Replace entire page with selected content
+            window.print(); // Open print dialog
+            document.body.innerHTML = originalContent; // Restore original page
+        }
+    </script>
+
+</body>
+</html>

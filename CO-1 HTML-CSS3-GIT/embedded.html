@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded JavaScript Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Embedded JavaScript Example</h1>
+    <p>This is a simple form that will use JavaScript to validate the input and change the content dynamically.</p>
+
+    <form id="myForm">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" required><br><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <div id="responseMessage" class="message"></div>
+
+    <h2>Dynamic Date Display</h2>
+    <p id="currentDate"></p>
+
+    <script>
+        // Embedded JavaScript function to handle form submission
+        function submitForm() {
+            // Getting input values
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+
+            // Validate input
+            if (name === "" || email === "") {
+                document.getElementById("responseMessage").innerHTML = "All fields are required!";
+                document.getElementById("responseMessage").classList.remove("success");
+                document.getElementById("responseMessage").classList.add("error");
+            } else {
+                // Display success message
+                document.getElementById("responseMessage").innerHTML = "Form submitted successfully! Welcome, " + name + "!";
+                document.getElementById("responseMessage").classList.remove("error");
+                document.getElementById("responseMessage").classList.add("success");
+            }
+        }
+
+        // Display current date dynamically using JavaScript
+        function displayDate() {
+            var today = new Date();
+            var dateString = today.toLocaleDateString();
+            document.getElementById("currentDate").innerHTML = "Today's date is: " + dateString;
+        }
+
+        // Call the function to display date when the page loads
+        displayDate();
+    </script>
+
+</body>
+</html>

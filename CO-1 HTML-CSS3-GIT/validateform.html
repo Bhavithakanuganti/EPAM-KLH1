@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Validation</title>
+    <style>
+        /* Styling for input fields and messages */
+        input[type="text"], input[type="password"] {
+            padding: 8px;
+            margin: 10px;
+            width: 250px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Login Form</h2>
+
+    <!-- Username and Password Input Form -->
+    <label for="username">Username:</label>
+    <input type="text" id="username" placeholder="Enter username">
+    <br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter password">
+    <br><br>
+
+    <button onclick="validateLogin()">Login</button>
+
+    <div id="message" class="message"></div>
+
+    <script>
+        function validateLogin() {
+            // Get username and password input values
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Assume valid username and password (for demonstration purposes)
+            var validUsername = "user"; // Example valid username
+            var validPassword = "password"; // Example valid password
+
+            var messageElement = document.getElementById("message");
+
+            // Case 1: Username and password both valid
+            if (username === validUsername && password === validPassword) {
+                messageElement.textContent = "Good morning!";
+                messageElement.className = "message success";
+            }
+            // Case 2: Username valid, password invalid
+            else if (username === validUsername && password !== validPassword) {
+                messageElement.textContent = "Sorry, try again later.";
+                messageElement.className = "message error";
+            }
+            // Case 3: Username invalid, password valid
+            else if (username !== validUsername && password === validPassword) {
+                messageElement.textContent = "Error";
+                messageElement.className = "message error";
+            }
+            // Case 4: Both username and password invalid
+            else {
+                messageElement.textContent = "Error 2";
+                messageElement.className = "message error";
+            }
+        }
+    </script>
+
+</body>
+</html>

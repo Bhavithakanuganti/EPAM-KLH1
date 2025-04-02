@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script type="text/javascript">
+        function submitForm() {
+            // Get form field values
+            var name = document.getElementById("name").value;
+            var branch = document.getElementById("branch").value;
+            var rollNumber = document.getElementById("rollNumber").value;
+            var collegeName = document.getElementById("collegeName").value;
+            var event = document.getElementById("event").value;
+
+            // Check if fields are filled
+            if(name && branch && rollNumber && collegeName && event) {
+                alert("Registration Successful!you are registered for:\nEvent: " + event);
+            } else {
+                alert("Please fill in all fields.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form onsubmit="event.preventDefault(); submitForm();">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="branch">Branch:</label><br>
+        <input type="text" id="branch" name="branch" required><br><br>
+
+        <label for="rollNumber">Roll Number:</label><br>
+        <input type="text" id="rollNumber" name="rollNumber" required><br><br>
+
+        <label for="collegeName">College Name:</label><br>
+        <input type="text" id="collegeName" name="collegeName" required><br><br>
+
+        <label for="event">Event:</label><br>
+        <select id="event" name="event" required>
+            <option value="">Select Event</option>
+            <option value="Coding">Coding</option>
+            <option value="Sports">Sports</option>
+            <option value="Music">Music</option>
+            <option value="Dance">Dance</option>
+            <option value="Art">Art</option>
+        </select><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration Page</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .event-images {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .event-images img {
+            width: 250px;
+            height: 150px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+
+        .event-images img:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .registration-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            padding: 12px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .registration-link:hover {
+            background-color: #555;
+        }
+    </style>
+    <script type="text/javascript">
+        // Function to handle the menu click and show respective sections
+        function showPage(pageId) {
+            var sections = document.querySelectorAll('main section');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+            document.getElementById(pageId).style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Event Registration Page</h1>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="javascript:void(0)" onclick="showPage('home')">Home</a>
+        <a href="javascript:void(0)" onclick="showPage('about')">About</a>
+        <a href="javascript:void(0)" onclick="showPage('services')">Services</a>
+        <a href="javascript:void(0)" onclick="showPage('contact')">Contact</a>
+    </nav>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Home Section with Registration and Event Images -->
+        <section id="home" style="display: block;">
+            <h2>Welcome to Our Event Page</h2>
+            <p>We offer several exciting events. Check them out below:</p>
+            
+            <div class="event-images">
+                <div>
+                    <h3>Coding Event</h3>
+                    <img src="coding.jpg" alt="Coding Event">
+                </div>
+                <div>
+                    <h3>Sports Event</h3>
+                    <img src="sports.jpg" alt="Sports Event">
+                </div>
+                <div>
+                    <h3>Music Event</h3>
+                    <img src="sing.jpeg" alt="Music Event">
+                </div>
+                <div>
+                    <h3>Dance Event</h3>
+                    <img src="dance.jpeg" alt="Dance Event">
+                </div>
+                <div>
+                    <h3>Art Event</h3>
+                    <img src="art1.jpeg" alt="Art Event">
+                </div>
+            </div>
+
+            <!-- Registration Link -->
+            <a href="registrationform1.html" class="registration-link">Click here to Register</a>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" style="display: none;">
+            <h2>About Us</h2>
+            <p>We are an organization dedicated to offering top-notch events for everyone. Join us to participate in exciting activities and showcase your talents.</p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" style="display: none;">
+            <h2>Our Services</h2>
+            <p>We offer a wide range of services, including event organization, workshops, and competitions.</p>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" style="display: none;">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, feel free to contact us at info@example.com.</p>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Company Name. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+

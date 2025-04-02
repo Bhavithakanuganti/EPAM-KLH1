@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age and Email Validation with Lists</title>
+    <style>
+        /* Style for text boxes */
+        input[type="text"] {
+            padding: 8px;
+            margin: 10px;
+            width: 250px;
+            font-size: 16px;
+        }
+
+        /* Style for lists */
+        ul, ol {
+            margin: 20px;
+        }
+
+        /* Style for tick and cross marks */
+        .tick {
+            color: green;
+        }
+
+        .cross {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Enter Your Information</h2>
+
+    <!-- First text box for age -->
+    <label for="age">Enter Age (18-80): </label>
+    <input type="text" id="age" oninput="validateAge()" placeholder="Enter age">
+    <br><br>
+
+    <!-- Second text box for email -->
+    <label for="email">Enter Email (must contain 'klh.edu.in'): </label>
+    <input type="text" id="email" oninput="validateEmail()" placeholder="Enter email">
+    <br><br>
+
+    <!-- List of 15 items -->
+    <h3>List of Items</h3>
+
+    <!-- Ordered List -->
+    <ol>
+        <li>Item 1: Ordered</li>
+        <li>Item 2: Ordered</li>
+        <li>Item 3: Ordered</li>
+        <li>Item 4: Ordered</li>
+        <li>Item 5: Ordered</li>
+        <li>Item 6: Ordered</li>
+        <li>Item 7: Ordered</li>
+        <li>Item 8: Ordered</li>
+        <li>Item 9: Ordered</li>
+        <li>Item 10: Ordered</li>
+    </ol>
+
+    <!-- Unordered List with ticks and crosses -->
+    <ul>
+        <li class="tick">Item 1: Unordered (Tick)</li>
+        <li class="cross">Item 2: Unordered (Cross)</li>
+        <li class="tick">Item 3: Unordered (Tick)</li>
+        <li class="cross">Item 4: Unordered (Cross)</li>
+        <li class="tick">Item 5: Unordered (Tick)</li>
+    </ul>
+
+    <script>
+        // Function to validate age
+        function validateAge() {
+            var age = document.getElementById("age").value;
+            var ageInput = document.getElementById("age");
+
+            if (age < 18) {
+                ageInput.style.backgroundColor = "red"; // If age < 18, make it red
+            } else if (age >= 18 && age <= 80) {
+                ageInput.style.backgroundColor = "lightgreen"; // If age is between 18 and 80, make it green
+            } else {
+                ageInput.style.backgroundColor = ""; // Reset to default if age > 80 or other cases
+            }
+        }
+
+        // Function to validate email
+        function validateEmail() {
+            var email = document.getElementById("email").value;
+            var emailInput = document.getElementById("email");
+
+            // Check if email contains "klh.edu.in"
+            if (email.includes("klh.edu.in")) {
+                emailInput.style.backgroundColor = "lightgreen"; // Email valid
+            } else {
+                emailInput.style.backgroundColor = "red"; // Email invalid
+            }
+        }
+    </script>
+
+</body>
+</html>

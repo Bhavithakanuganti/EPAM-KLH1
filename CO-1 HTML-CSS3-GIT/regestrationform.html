@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        /* Styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        .form-container {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        /* Passport size photo */
+        .photo-container {
+            margin-right: 20px;
+        }
+
+        .photo-container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+        }
+
+        /* Form fields */
+        .form-field {
+            margin-bottom: 15px;
+        }
+
+        input, select {
+            padding: 8px;
+            width: 250px;
+            font-size: 16px;
+        }
+
+        .message {
+            color: red;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Registration Form</h2>
+
+    <div class="form-container">
+        <!-- Passport Photo -->
+        <div class="photo-container">
+            <img src="https://via.placeholder.com/120" alt="Passport Photo">
+        </div>
+
+        <!-- Form -->
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <div class="form-field">
+                <label for="name">Student Name:</label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+
+            <div class="form-field">
+                <label for="regNo">Registration Number:</label>
+                <input type="text" id="regNo" placeholder="Enter registration number">
+            </div>
+
+            <div class="form-field">
+                <label for="mobile">Mobile Number:</label>
+                <input type="text" id="mobile" placeholder="Enter mobile number">
+            </div>
+
+            <div class="form-field">
+                <label for="email">Email ID:</label>
+                <input type="text" id="email" placeholder="Enter email">
+            </div>
+
+            <div class="form-field">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter username">
+            </div>
+
+            <div class="form-field">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter password">
+            </div>
+
+            <div class="form-field">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" onchange="calculateAge()">
+            </div>
+
+            <div id="ageInfo"></div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        // Function to validate the form
+        function validateForm() {
+            // Clear previous error messages
+            document.getElementById("message").innerHTML = "";
+
+            // Get input values
+            var name = document.getElementById("name").value;
+            var regNo = document.getElementById("regNo").value;
+            var mobile = document.getElementById("mobile").value;
+            var email = document.getElementById("email").value;
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var dob = document.getElementById("dob").value;
+
+            var messageElement = document.getElementById("message");
+
+            // Validate student name (cannot be empty)
+            if (name == "") {
+                messageElement.innerHTML = "Student Name is required.";
+                return false;
+            }
+
+            // Validate registration number (cannot be empty)
+            if (regNo == "") {
+                messageElement.innerHTML = "Registration number is required.";
+                return false;
+            }
+
+            // Validate mobile number (must be 10 digits)
+            var mobilePattern = /^[0-9]{10}$/;
+            if (!mobile.match(mobilePattern)) {
+                messageElement.innerHTML = "Mobile number must be 10 digits.";
+                return false;
+            }
+
+            // Validate email (basic email format check)
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!email.match(emailPattern)) {
+                messageElement.innerHTML = "Enter a valid email address.";
+                return false;
+            }
+
+            // Validate username (no special characters)
+            var usernamePattern = /^[a-zA-Z0-9]+$/;
+            if (!username.match(usernamePattern)) {
+                messageElement.innerHTML = "Username must not contain special characters.";
+                return false;
+            }
+
+            // Validate password (at least 8 characters)
+            if (password.length < 8) {
+                messageElement.innerHTML = "Password must be at least 8 characters long.";
+                return false;
+            }
+
+            // Check if the password is not repeated (simple check for demonstration)
+            var existingPasswords = ["password123", "qwerty123", "admin123"];
+            if (existingPasswords.includes(password)) {
+                messageElement.innerHTML = "Password is too common, please choose a different one.";
+                return false;
+            }
+
+            // If all validations pass
+            messageElement.innerHTML = "Form submitted successfully!";
+            messageElement.className = "success";
+            return true;
+        }
+
+        // Function to calculate age from date of birth (DOB)
+        function calculateAge() {
+            var dob = document.getElementById("dob").value;
+            var ageInfo = document.getElementById("ageInfo");
+
+            if (dob) {
+                var birthDate = new Date(dob);
+                var today = new Date();
+                var ageInMilliseconds = today - birthDate;
+                var ageDate = new Date(ageInMilliseconds);
+                var years = ageDate.getUTCFullYear() - 1970;
+                var months = ageDate.getUTCMonth();
+                var days = ageDate.getUTCDate() - 1;
+
+                ageInfo.innerHTML = "Age: " + years + " years, " + months + " months, " + days + " days";
+            }
+        }
+    </script>
+
+</body>
+</html>
